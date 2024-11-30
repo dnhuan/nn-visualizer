@@ -3,8 +3,10 @@
 -   [x] Model training
 -   [x] Model inference on python
 -   [ ] Phase 1:Model inference Cloud Function
-    -   [ ] React client to draw digits
-    -   [ ] Send image to Cloud Function (with debounce)
+    -   [x] React client to draw digits
+        -   [x] Mouse pointer events are not publishing consistently, adding (Bresenham's line algorithm)[https://www.wikiwand.com/en/articles/Bresenham%27s_line_algorithm] to fill in the gaps
+        -   <strike> Consider using html canvas instead of divs </strike>
+    -   [ ] Send image to endpoint (with debounce)
     -   [ ] Return prediction and Tensor values to React client
     -   [ ] Build network of Tensor values
     -   [ ] Display prediction
@@ -20,6 +22,8 @@
 ### Resources
 
 https://nextjournal.com/gkoehler/pytorch-mnist
+https://stackoverflow.com/questions/26432492/chessboard-html5-only
+https://www.wikiwand.com/en/articles/Bresenham%27s_line_algorithm
 
 ### License
 
