@@ -8,8 +8,8 @@
         -   <strike> Consider using html canvas instead of divs </strike>
     -   [ ] Send image to endpoint (with debounce)
     -   [ ] Return prediction and Tensor values to React client
-    -   [ ] Build network of Tensor values
     -   [ ] Display prediction
+    -   [ ] Build network of Tensor values
     -   [ ] Display Tensor values
 -   [ ] Phase 2: Client side inference
     -   [ ] Tensorflow.js
