@@ -1,4 +1,4 @@
-# MNIST CNN Visualizer
+# MNIST Neural Network Visualizer
 
 -   [x] Model training
 -   [x] Model inference on python
