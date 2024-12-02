@@ -7,15 +7,15 @@
         -   [x] Mouse pointer events are not publishing consistently, adding (Bresenham's line algorithm)[https://www.wikiwand.com/en/articles/Bresenham%27s_line_algorithm] to fill in the gaps
         -   <strike> Consider using html canvas instead of divs </strike>
     -   [ ] Send image to endpoint (with debounce)
-        -   [ ] Setup REST API endpoint
-        -   [ ] Read weights from json file
-        -   [ ] Rebuild network structure
-            -   [ ] Layers
-            -   [ ] ReLU
-            -   [ ] Softmax
-        -   [ ] Load weights into network
-        -   [ ] Run inference
-        -   [ ] Return prediction and Tensor values to React client
+        -   [x] Setup REST API endpoint
+        -   [x] Read weights from json file
+        -   [x] Rebuild network structure
+            -   [x] Layers
+            -   [x] ReLU
+            -   [x] Softmax
+        -   [x] Load weights into network
+        -   [x] Run inference
+        -   [x] Return prediction and Tensor values to React client
     -   [ ] Display prediction
     -   [ ] Build network of Tensor values
     -   [ ] Display Tensor values
