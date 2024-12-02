@@ -7,7 +7,15 @@
         -   [x] Mouse pointer events are not publishing consistently, adding (Bresenham's line algorithm)[https://www.wikiwand.com/en/articles/Bresenham%27s_line_algorithm] to fill in the gaps
         -   <strike> Consider using html canvas instead of divs </strike>
     -   [ ] Send image to endpoint (with debounce)
-    -   [ ] Return prediction and Tensor values to React client
+        -   [ ] Setup REST API endpoint
+        -   [ ] Read weights from json file
+        -   [ ] Rebuild network structure
+            -   [ ] Layers
+            -   [ ] ReLU
+            -   [ ] Softmax
+        -   [ ] Load weights into network
+        -   [ ] Run inference
+        -   [ ] Return prediction and Tensor values to React client
     -   [ ] Display prediction
     -   [ ] Build network of Tensor values
     -   [ ] Display Tensor values
@@ -24,6 +32,7 @@
 https://nextjournal.com/gkoehler/pytorch-mnist
 https://stackoverflow.com/questions/26432492/chessboard-html5-only
 https://www.wikiwand.com/en/articles/Bresenham%27s_line_algorithm
+https://github.com/lionelmessi6410/Neural-Networks-from-Scratch
 
 ### License
 
