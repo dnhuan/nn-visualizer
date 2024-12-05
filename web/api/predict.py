@@ -26,9 +26,6 @@ def softmax(x):
 
 class FCNN:
     def __init__(self, weights_biases):
-        self.input_layer_size = 784
-        self.hidden_layer_size = 16
-        self.output_layer_size = 10
         self.net = {
             "fc1": np.array(weights_biases["fc1.weight"]),
             "fc1_b": np.array(weights_biases["fc1.bias"]),

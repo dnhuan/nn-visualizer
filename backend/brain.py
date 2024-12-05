@@ -9,16 +9,9 @@ with open("files/3.json", "r") as f:
 def softmax(x):
     return np.exp(x) / np.sum(np.exp(x), axis=0)
 
-# input layer: 784 nodes in, 16 nodes for ReLU activation
-# hidden layer: 16 nodes in, 16 nodes for ReLU activation
-# output layer: 16 nodes in, 10 nodes out for softmax
-
 
 class FCNN:
     def __init__(self, weights_biases):
-        self.input_layer_size = 784
-        self.hidden_layer_size = 16
-        self.output_layer_size = 10
         self.net = {
             "fc1": np.array(weights_biases["fc1.weight"]),
             "fc1_b": np.array(weights_biases["fc1.bias"]),
