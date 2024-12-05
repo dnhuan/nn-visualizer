@@ -33,6 +33,7 @@ https://nextjournal.com/gkoehler/pytorch-mnist
 https://stackoverflow.com/questions/26432492/chessboard-html5-only
 https://www.wikiwand.com/en/articles/Bresenham%27s_line_algorithm
 https://github.com/lionelmessi6410/Neural-Networks-from-Scratch
+https://sim51.github.io/react-sigma/
 
 ### License
 

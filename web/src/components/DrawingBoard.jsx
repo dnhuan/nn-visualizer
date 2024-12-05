@@ -75,7 +75,6 @@ export default function DrawingBoard() {
 }
 
 function drawBresenhamLine(x0, y0, x1, y1, isUsingPencil, newBoardState) {
-	console.log("x0", x0, "y0", y0, "x1", x1, "y1", y1);
 	const dx = Math.abs(x1 - x0);
 	const dy = Math.abs(y1 - y0);
 	const sx = x0 < x1 ? 1 : -1;

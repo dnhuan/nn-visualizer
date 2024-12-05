@@ -16,6 +16,7 @@ def predict():
         weights_biases = json.load(f)
         net = FCNN(weights_biases)
         prediction = net.forward(flatten_data)
+        np.set_printoptions(suppress=True, formatter={'float_kind': '{:f}'.format})
         return {"prediction": softmax(prediction["Z3"]).tolist(), "A1": softmax(prediction["A1"]).tolist(), "A2": softmax(prediction["A2"]).tolist()}
 
 
