@@ -2,7 +2,7 @@
 
 -   [x] Model training
 -   [x] Model inference on python
--   [ ] Phase 1:Model inference Cloud Function
+-   [x] Phase 1: Model inference Cloud Function
     -   [x] React client to draw digits
         -   [x] Mouse pointer events are not publishing consistently, adding (Bresenham's line algorithm)[https://www.wikiwand.com/en/articles/Bresenham%27s_line_algorithm] to fill in the gaps
         -   <strike> Consider using html canvas instead of divs </strike>
@@ -16,15 +16,12 @@
         -   [x] Load weights into network
         -   [x] Run inference
         -   [x] Return prediction and Tensor values to React client
-    -   [ ] Display prediction
-    -   [ ] Build network of Tensor values
-    -   [ ] Display Tensor values
+    -   [x] Display prediction
 -   [ ] Phase 2: Client side inference
-    -   [ ] Tensorflow.js
-    -   [ ] Convert weights to Tensorflow.js format
-    -   [ ] Load weights
-    -   [ ] Instead of sending image to Cloud Function, run inference directly in browser
-    -   [ ] Display prediction
+    -   [x] Setup numjs
+    -   [x] Load weights
+    -   [x] Run inference directly in browser
+    -   [x] Display prediction
     -   [ ] Display Tensor values
 
 ### Resources

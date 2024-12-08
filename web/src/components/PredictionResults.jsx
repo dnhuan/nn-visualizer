@@ -1,6 +1,11 @@
 import { useState, useEffect } from "react";
 import { useAtom } from "jotai";
 import { boardStateAtom } from "../states/Board";
+import {
+	isDrawn,
+	findIndexOfMax,
+	getPredictionClientSide,
+} from "../inference/InferenceUtils";
 
 export default function PredictionResults() {
 	const [debounceTimeout, setDebounceTimeout] = useState(null);
@@ -12,16 +17,14 @@ export default function PredictionResults() {
 	useEffect(() => {
 		async function fetchPrediction() {
 			try {
-				if (
-					boardState.length === 0 ||
-					boardState.flat().reduce((a, b) => a + b, 0) === 0
-				) {
-					throw new Error("No pixels drawn");
+				if (!isDrawn(boardState)) {
+					return;
 				}
 
-				const result = await getPrediction(boardState);
+				const result = getPredictionClientSide(boardState);
 				setResult(result);
 			} catch (error) {
+				console.error(error);
 				setResult({
 					prediction: Array.from({ length: 10 }, () => 0.0),
 				});
@@ -33,16 +36,15 @@ export default function PredictionResults() {
 		}
 
 		// 0.5 second delay
-		setDebounceTimeout(setTimeout(fetchPrediction, 500));
+		setDebounceTimeout(setTimeout(fetchPrediction, 1));
 	}, [boardState]);
 
 	return <div>{displayPrediction(result)}</div>;
 }
 
 function displayPrediction(result) {
-	const bestPrediction = result.prediction.indexOf(
-		Math.max(...result.prediction)
-	);
+	const bestPrediction = findIndexOfMax(result);
+
 	return (
 		<div>
 			{result.prediction.map((p, i) => (
@@ -55,33 +57,4 @@ function displayPrediction(result) {
 			))}
 		</div>
 	);
-}
-
-async function getPrediction(boardState) {
-	// map from true/false to 0/1
-	const mappedBoardState = boardState.map((row) =>
-		row.map((cell) => (cell ? 1.0 : 0.0))
-	);
-
-	// transpose
-	const transposedBoardState = mappedBoardState[0].map((_, colIndex) =>
-		mappedBoardState.map((row) => row[colIndex])
-	);
-
-	const raw = JSON.stringify(transposedBoardState);
-
-	const requestOptions = {
-		method: "POST",
-		headers: {
-			"Content-Type": "application/json",
-		},
-		body: raw,
-	};
-
-	const response = await fetch("/api/predict", requestOptions);
-	const data = await response.json();
-	return data;
-	// return {
-	// 	prediction: Array.from({ length: 10 }, () => Math.random()),
-	// };
 }
