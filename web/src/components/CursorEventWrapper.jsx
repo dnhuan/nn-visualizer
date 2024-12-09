@@ -44,7 +44,6 @@ export default function CursorEventWrapper({ children }) {
 				});
 			}}
 			onTouchMove={(e) => {
-				e.nativeEvent.preventDefault();
 				setMousePosition({
 					x: e.changedTouches[0].clientX,
 					y: e.changedTouches[0].clientY,

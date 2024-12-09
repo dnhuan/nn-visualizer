@@ -10,8 +10,7 @@ import { DEFAULT_NODE_PROGRAM_CLASSES } from "sigma/settings";
 import { NodeSquareProgram } from "@sigma/node-square";
 import { createNodeBorderProgram } from "@sigma/node-border";
 import "@react-sigma/core/lib/react-sigma.min.css";
-const height = 800;
-const sigmaStyle = { height: `${height}px`, width: "1200px" };
+const height = 900;
 
 export function LoadGraph({ net }) {
 	const loadGraph = useLoadGraph();
@@ -20,6 +19,9 @@ export function LoadGraph({ net }) {
 
 	useEffect(() => {
 		setSettings({
+			zoomToSizeRatioFunction: (ratio) => ratio,
+			itemSizesReference: "positions",
+			autoRescale: true,
 			labelDensity: 0,
 			nodeProgramClasses: {
 				...DEFAULT_NODE_PROGRAM_CLASSES,
@@ -50,7 +52,7 @@ export function LoadGraph({ net }) {
 				y: y,
 				label: `${p.toFixed(0)}`,
 				color: p != 0.0 ? "#000000" : "#eeeeee",
-				size: 2,
+				size: 3,
 				type: "square",
 			});
 		});
@@ -65,7 +67,7 @@ export function LoadGraph({ net }) {
 				y: y,
 				label: `${p.toFixed(2)}`,
 				color: p != 0.0 ? "#000000" : "#ffffff",
-				size: 10,
+				size: 20,
 				type: "bordered",
 				borderColor: "#000000",
 				borderSize: 0.1,
@@ -82,7 +84,7 @@ export function LoadGraph({ net }) {
 				y: y,
 				label: `${p.toFixed(2)}`,
 				color: p != 0.0 ? "#000000" : "#ffffff",
-				size: 10,
+				size: 20,
 				type: "bordered",
 				borderColor: "#000000",
 				borderSize: 0.1,
@@ -100,7 +102,7 @@ export function LoadGraph({ net }) {
 				label: `${i}: ${p.toFixed(2)}`,
 				color: p > 0.5 ? "#000000" : "#ffffff",
 				forceLabel: true,
-				size: 10,
+				size: 20,
 				type: "bordered",
 				borderColor: "#000000",
 				borderSize: 0.1,
@@ -137,6 +139,7 @@ export function LoadGraph({ net }) {
 
 		loadGraph(graph);
 		sigma.scheduleRefresh();
+		sigma.getCamera().disable();
 	}, [loadGraph, net]);
 
 	return null;
@@ -145,8 +148,10 @@ export function LoadGraph({ net }) {
 // Component that display the graph
 export function DisplayGraph({ net }) {
 	return (
-		<SigmaContainer style={sigmaStyle}>
-			<LoadGraph net={net} />
-		</SigmaContainer>
+		<div className="h-[300px] w-full pr-10">
+			<SigmaContainer>
+				<LoadGraph net={net} />
+			</SigmaContainer>
+		</div>
 	);
 }
