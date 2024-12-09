@@ -46,7 +46,12 @@ export default function DrawingBoard() {
 				newBoardState
 			);
 		} else {
-			newBoardState[cellX][cellY] = isUsingPencil;
+			newBoardState = drawPoint(
+				cellX,
+				cellY,
+				isUsingPencil,
+				newBoardState
+			);
 		}
 
 		setLastPosition({ x: cellX, y: cellY });
@@ -74,8 +79,23 @@ export default function DrawingBoard() {
 	);
 }
 
+function drawPoint(x, y, isUsingPencil, newBoardState) {
+	for (let i = -1; i <= 1; i++) {
+		for (let j = -1; j <= 1; j++) {
+			const newX = x + i;
+			const newY = y + j;
+
+			if (newX >= 0 && newX < 28 && newY >= 0 && newY < 28) {
+				if (Math.abs(i) + Math.abs(j) <= 1) {
+					newBoardState[newX][newY] = isUsingPencil;
+				}
+			}
+		}
+	}
+	return newBoardState;
+}
+
 function drawBresenhamLine(x0, y0, x1, y1, isUsingPencil, newBoardState) {
-	console.log("x0", x0, "y0", y0, "x1", x1, "y1", y1);
 	const dx = Math.abs(x1 - x0);
 	const dy = Math.abs(y1 - y0);
 	const sx = x0 < x1 ? 1 : -1;
@@ -84,7 +104,7 @@ function drawBresenhamLine(x0, y0, x1, y1, isUsingPencil, newBoardState) {
 
 	while (true) {
 		if (x0 >= 0 && x0 < 28 && y0 >= 0 && y0 < 28) {
-			newBoardState[x0][y0] = isUsingPencil;
+			newBoardState = drawPoint(x0, y0, isUsingPencil, newBoardState);
 		}
 
 		if (x0 === x1 && y0 === y1) break;
