@@ -34,8 +34,9 @@ export class FCNN {
 
 		return {
 			prediction: nj.softmax(this.cache.Z3).tolist(),
-			A1: nj.softmax(this.cache.A1).tolist(),
-			A2: nj.softmax(this.cache.A2).tolist(),
+			A1: this.cache.A1.tolist(),
+			A2: this.cache.A2.tolist(),
+			input: this.cache.input.tolist(),
 		};
 	}
 }

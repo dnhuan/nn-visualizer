@@ -1,23 +1,25 @@
 import { useState, useEffect } from "react";
 import { useAtom } from "jotai";
 import { boardStateAtom } from "../states/Board";
-import {
-	isDrawn,
-	findIndexOfMax,
-	getPredictionClientSide,
-} from "../inference/InferenceUtils";
+import { DisplayGraph } from "./FcnnGraph";
+import { isDrawn, getPredictionClientSide } from "../inference/InferenceUtils";
+
+const defaultResult = {
+	input: Array.from({ length: 28 * 28 }, () => 0.0),
+	A1: Array.from({ length: 28 }, () => 0.0),
+	A2: Array.from({ length: 14 }, () => 0.0),
+	prediction: Array.from({ length: 10 }, () => 0.0),
+};
 
 export default function PredictionResults() {
-	const [debounceTimeout, setDebounceTimeout] = useState(null);
 	const [boardState] = useAtom(boardStateAtom);
-	const [result, setResult] = useState({
-		prediction: Array.from({ length: 10 }, () => 0.0),
-	});
+	const [result, setResult] = useState(defaultResult);
 
 	useEffect(() => {
 		async function fetchPrediction() {
 			try {
 				if (!isDrawn(boardState)) {
+					setResult(defaultResult);
 					return;
 				}
 
@@ -25,36 +27,11 @@ export default function PredictionResults() {
 				setResult(result);
 			} catch (error) {
 				console.error(error);
-				setResult({
-					prediction: Array.from({ length: 10 }, () => 0.0),
-				});
+				setResult(defaultResult);
 			}
 		}
-
-		if (debounceTimeout) {
-			clearTimeout(debounceTimeout);
-		}
-
-		// 0.5 second delay
-		setDebounceTimeout(setTimeout(fetchPrediction, 1));
+		fetchPrediction();
 	}, [boardState]);
 
-	return <div>{displayPrediction(result)}</div>;
-}
-
-function displayPrediction(result) {
-	const bestPrediction = findIndexOfMax(result);
-
-	return (
-		<div>
-			{result.prediction.map((p, i) => (
-				<div
-					key={i}
-					className={i === bestPrediction ? "text-green-500" : ""}
-				>
-					{i}: {p.toFixed(2)}
-				</div>
-			))}
-		</div>
-	);
+	return <DisplayGraph net={result} />;
 }

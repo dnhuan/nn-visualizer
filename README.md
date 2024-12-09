@@ -6,7 +6,7 @@
     -   [x] React client to draw digits
         -   [x] Mouse pointer events are not publishing consistently, adding (Bresenham's line algorithm)[https://www.wikiwand.com/en/articles/Bresenham%27s_line_algorithm] to fill in the gaps
         -   <strike> Consider using html canvas instead of divs </strike>
-    -   [ ] Send image to endpoint (with debounce)
+    -   [x] Send image to endpoint (with debounce)
         -   [x] Setup REST API endpoint
         -   [x] Read weights from json file
         -   [x] Rebuild network structure
@@ -17,12 +17,12 @@
         -   [x] Run inference
         -   [x] Return prediction and Tensor values to React client
     -   [x] Display prediction
--   [ ] Phase 2: Client side inference
+-   [x] Phase 2: Client side inference
     -   [x] Setup numjs
     -   [x] Load weights
     -   [x] Run inference directly in browser
     -   [x] Display prediction
-    -   [ ] Display Tensor values
+    -   [x] Display Tensor values
 
 ### Resources
 
