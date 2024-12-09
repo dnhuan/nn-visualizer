@@ -19,6 +19,7 @@ export function LoadGraph({ net }) {
 
 	useEffect(() => {
 		setSettings({
+			maxCameraRatio: 0.81,
 			zoomToSizeRatioFunction: (ratio) => ratio,
 			itemSizesReference: "positions",
 			autoRescale: true,
@@ -148,7 +149,7 @@ export function LoadGraph({ net }) {
 // Component that display the graph
 export function DisplayGraph({ net }) {
 	return (
-		<div className="h-[300px] w-full pr-10">
+		<div className="h-[250px] w-full pr-10">
 			<SigmaContainer>
 				<LoadGraph net={net} />
 			</SigmaContainer>
