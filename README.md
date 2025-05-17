@@ -1,4 +1,5 @@
 # MNIST Neural Network Visualizer
+Demo: [https://mnist-nn-visualizer.vercel.app](https://mnist-nn-visualizer.vercel.app)
 
 -   [x] Model training
 -   [x] Model inference on python
