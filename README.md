@@ -1,6 +1,11 @@
 # MNIST Neural Network Visualizer
 Demo: [https://mnist-nn-visualizer.vercel.app](https://mnist-nn-visualizer.vercel.app)
 
+<img src="https://github.com/user-attachments/assets/aa578a21-f3d2-4cc0-87e8-5cb90f5b35e6" alt="drawing" width="200"/>
+<img src="https://github.com/user-attachments/assets/7a1e6698-7aa2-42ed-a9fb-eff3f36d718e" alt="drawing" width="200"/>
+<img src="https://github.com/user-attachments/assets/d80e9b8b-dd35-4f45-a42b-03dd51208063" alt="drawing" width="200"/>
+
+
 -   [x] Model training
 -   [x] Model inference on python
 -   [x] Phase 1: Model inference Cloud Function
